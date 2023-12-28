@@ -449,6 +449,27 @@ function paint() {
 				stroke()
 
 				break
+			
+			case "lood-shape":
+				set_source_rgba(inactivelcdcolor)
+
+				get_lcdcolor(hover_state)
+				set_line_width(2 + 1 * click_state)
+				
+				var tri = (1 - clamp(value, 0, 0.25) * 4) * 6
+				var saw = (1 - (clamp(value, 0.25, 0.5) - 0.25) * 4) * 11
+				var pw = (clamp(value, 0.5, 1) - 0.5) * 2 * 6
+
+				move_to(6, 18)
+				rel_line_to(tri, -11)
+				rel_line_to(12 + pw - tri, saw)
+				rel_line_to(0, 11 - saw)
+				rel_line_to(0, 11 - saw)
+				rel_line_to(12 - pw - tri, saw)
+				rel_line_to(tri, -11)
+				stroke()
+
+				break
 		}
 	}
 }
