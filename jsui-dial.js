@@ -456,17 +456,22 @@ function paint() {
 				get_lcdcolor(hover_state)
 				set_line_width(2 + 1 * click_state)
 				
-				var tri = (1 - clamp(value, 0, 0.25) * 4) * 6
-				var saw = (1 - (clamp(value, 0.25, 0.5) - 0.25) * 4) * 11
-				var pw = (clamp(value, 0.5, 1) - 0.5) * 2 * 6
+				var noi = (1 - clamp(value, 0, 0.1) * 10)
+				var tri = (1 - (clamp(value, 0.1, 0.3) - 0.1) * 5) * 6
+				var saw = (1 - (clamp(value, 0.3, 0.5) - 0.3) * 5) * 11
+				var pw = (clamp(value, 0.5, 1) - 0.5) * 2 * 7
 
 				move_to(6, 18)
-				rel_line_to(tri, -11)
-				rel_line_to(12 + pw - tri, saw)
+				rel_line_to(tri - noi * 3, -11)
+				rel_line_to(noi * 3, 22 * noi)
+				rel_line_to(12 + pw - tri - noi * 3, saw - noi * 33)
 				rel_line_to(0, 11 - saw)
 				rel_line_to(0, 11 - saw)
-				rel_line_to(12 - pw - tri, saw)
-				rel_line_to(tri, -11)
+				rel_line_to(12 - pw - tri - noi * 3, saw + noi * 11)
+				rel_line_to(noi * 3, -22 * noi)
+				rel_line_to(noi * 3, 22 * noi)
+				rel_line_to(noi * 3, -22 * noi)
+				rel_line_to(tri - noi * 3, -11 + noi * 22)
 				stroke()
 
 				break
